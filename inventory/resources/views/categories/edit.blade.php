@@ -10,7 +10,7 @@
                         {!! Form::model($category, ['route' => ['categories.update', $category->id], 'method' => 'PUT']) !!}
                          {{ Form::label('category', 'Category: ') }}
                         {{ Form::text('category', null, ['class'=>'form-control', 'style'=>'', 'id'=>'category' ]) }}
-                         {{ Form::submit('Save New Category', ['class'=> 'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px'])}}
+                         {{ Form::submit('Update Category', ['class'=> 'btn btn-primary btn-lg btn-block', 'style'=>'margin-top:20px'])}}
                         {!! Form::close() !!}
                     </div>
                  </div>

@@ -49,7 +49,14 @@ class ItemsController extends Controller
         $valid = $this->validate($request, $rules);
         $item = new \App\Models\Items;
 
-        $item->category = $request->item;
+        $item->category_id = $request->category_id;
+        $item->title = $request->title;
+        $item->description = $request->description;
+        $item->price = $request->price;
+        $item->quantity = $request->quantity;
+        $item->sku = $request->sku;
+        $item->image = $request->image;
+
         $item->save();
 
         return redirect()->route('item.index');
@@ -75,7 +82,8 @@ class ItemsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $edit = \App\Models\Items::find($id);
+        return view('item.edit')->with('edit', $edit);
     }
 
     /**
@@ -116,5 +124,6 @@ class ItemsController extends Controller
         //
         $item = \App\Models\Items::find($id);
         $item->delete();
+        return redirect()->route('item.index')->with('success', 'Item deleted successfully');
     }
 }
