@@ -83,7 +83,15 @@ class CategoriesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+        $rules = [
+            'category' => 'required|max:50|unique:categories,category,'.$id
+        ];
+        $valid = $this->validate($request, $rules);
+
+        $category = \App\Models\Category::find($id);
+        $category->category = $request->category;
+        $category->save();
+        return redirect()->route('categories.index');
         
     }
 
