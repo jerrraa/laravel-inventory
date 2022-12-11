@@ -12,5 +12,9 @@ class Item extends Model
     protected $dates = ['created_at', 'updated_at', 'deleted_at'];
 
     
+    public function category()
+    {
+        return $this->hasOne('App\Models\Category', 'id', 'category_id');
+    }
 
 }
